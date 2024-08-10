@@ -21,7 +21,7 @@ class Lab:
     Imax: float  # Максимальный ток
 
     # Значения для сходимости
-    H = 1e-7  # Точность
+    H = 1e-6 # Точность
     STEP = 1 / 30
 
     # Массивы данных
@@ -163,7 +163,7 @@ class Lab:
 
         while t_n < t_max:
             if with_r:
-                k1 = self.H * self.dI_dt(i_n, u_n, -self.Rk)
+                k1 = self.H * self.dI_dt(i_n, u_n, r_n)
             else:
                 k1 = self.H * self.dI_dt(i_n, u_n, -self.Rk)  # (Rk + Rp) == 0
             q1 = self.H * self.dU_dt(i_n)
@@ -338,12 +338,12 @@ class Lab:
             axs[1, 1].plot(self.tResArr, self.t0ResArr)
 
             # Отрисовка графика функция sigma(t)
-            axs[1, 2].set_title("sigma(t)", fontsize=14, fontweight='bold')
-            axs[1, 2].set_xlabel('t')
-            axs[1, 2].set_ylabel('sigma')
-            self.tkResArr.sort()
-            self.sigmaResArr.sort()
-            axs[1, 2].plot(self.tkResArr, self.sigmaResArr)
+            # axs[1, 2].set_title("sigma(t)", fontsize=14, fontweight='bold')
+            # axs[1, 2].set_xlabel('t')
+            # axs[1, 2].set_ylabel('sigma')
+            # self.tkResArr.sort()
+            # self.sigmaResArr.sort()
+            # axs[1, 2].plot(self.tkResArr, self.sigmaResArr)
 
         plt.show()
 

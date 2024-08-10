@@ -19,7 +19,6 @@ def print_menu():
     print("5 - Runge 2nd Rk+Rp=0")
     print("6 - Runge 4nd Rk+Rp=0")
     print("7 - Runge 4nd Rk=200")
-    print("0 - Exit")
     print("---------------------------------------------")
 
 def main():
@@ -33,45 +32,44 @@ def main():
     print(table1)
     print("---------------------------------------------")
 
-    f = Lab(table1, table2)
-    choice = -1
-    while choice != 0:
-        print_menu()
-        choice = int(input("Жду?:"))
-        if choice == 1:
-            f.dropResultArrs()
-            f.euler(t=0, t_max=PD)
-            f.drawGraf(task=2, text="Метод Эйлера")
-        elif choice == 2:
-            f.dropResultArrs()
-            f.runge2(t=0, t_max=PD)
-            f.drawGraf(task=2, text="Метод Рунге-Кутта 2 порядка")
-        elif choice == 3:
-            f.dropResultArrs()
-            f.runge4(t=0, t_max=PD)
-            f.drawGraf(task=2, text="Метод Рунге-Кутта 4 порядка")
-        elif choice == 4:
-            f.dropResultArrs()
-            f.euler(t=0, t_max=PD_without_r, with_r=False)
-            f.drawGraf(task=3, text="Метод Рунге-Кутта 4 порядка")
-        elif choice == 5:
-            f.dropResultArrs()
-            f.runge2(t=0, t_max=PD_without_r, with_r=False)
-            f.drawGraf(task=3, text="Метод Рунге-Кутта 4 порядка")
-        elif choice == 6:
-            f.dropResultArrs()
-            f.runge4(t=0, t_max=PD_without_r, with_r=False)
-            f.drawGraf(task=3, text="Метод Рунге-Кутта 4 порядка")
-        elif choice == 7:
-            f.Rk = 200
-            print(f.Rk)
-            f.runge4(0, 20e-6, with_r=True)
+    print_menu()
+    choice = int(input("Жду?:"))
+    if choice == 1:
+        f = Lab(table1, table2)
+        f.euler(t=0, t_max=PD)
+        f.drawGraf(task=2, text="Метод Эйлера")
+    elif choice == 2:
+        f = Lab(table1, table2)
+        f.runge2(t=0, t_max=PD)
+        f.drawGraf(task=2, text="Метод Рунге-Кутта 2 порядка")
+    elif choice == 3:
+        f = Lab(table1, table2)
+        f.runge4(t=0, t_max=PD)
+        f.drawGraf(task=2, text="Метод Рунге-Кутта 4 порядка")
+    elif choice == 4:
+        f = Lab(table1, table2)
+        f.euler(t=0, t_max=PD_without_r, with_r=False)
+        f.drawGraf(task=3, text="Метод Эйлера")
+    elif choice == 5:
+        f = Lab(table1, table2)
+        f.runge2(t=0, t_max=PD_without_r, with_r=False)
+        f.drawGraf(task=3, text="Метод Рунге-Кутта 2 порядка")
+    elif choice == 6:
+        f = Lab(table1, table2)
+        f.runge4(t=0, t_max=PD_without_r, with_r=False)
+        f.drawGraf(task=3, text="Метод Рунге-Кутта 4 порядка")
+    elif choice == 7:
+        f = Lab(table1, table2)
+        f.Rk = 200
+        print(f.Rk)
+        f.runge4(0, 20e-6, with_r=True)
 
-            plt.plot(f.tResArr, f.iResArr, "green", label="Runge 4")
-            plt.legend(loc='best')
-            plt.title("I(t)")
-            plt.show()
-            f.Rk = 0.25
+        plt.plot(f.tResArr, f.iResArr, "green", label="Runge 4")
+        plt.legend(loc='best')
+        plt.title("I(t)")
+        plt.show()
+
+
 if __name__ == '__main__':
    main()
 
